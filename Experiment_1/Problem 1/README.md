@@ -8,8 +8,8 @@ numbers. However, the array does not contain any duplicate elements. Your task i
 program to find the smallest positive integer that is missing from the array.
 
 Write a function int findMissingInteger(int arr[], int size) that takes the following parameters:  
- arr: An array of integers.  
- size: The size of the array.  
+1. arr: An array of integers.  
+2. size: The size of the array.  
 The function should return the smallest positive integer that is missing from the array. If no
 positive integer is missing, the function should return the next positive integer after the maximum
 element in the array.
