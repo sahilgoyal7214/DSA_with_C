@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int binarySearchWords(char* words[], int size, char* target) {
@@ -25,17 +26,24 @@ int main() {
     int size, i;
     printf("Enter the number of words: ");
     scanf("%d", &size);
-    
-    char words[size][100]; // Assuming each word has a maximum length of 100 characters
+    getchar(); // Clear the newline character left in the input buffer
+
+    char** words = (char**)malloc(size * sizeof(char*));
 
     printf("Enter the sorted words:\n");
     for (i = 0; i < size; i++) {
-        scanf("%s", words[i]);
+        char buffer[100];
+        fgets(buffer, sizeof(buffer), stdin);
+        buffer[strcspn(buffer, "\n")] = '\0'; // Remove the trailing newline character from the input
+
+        words[i] = (char*)malloc((strlen(buffer) + 1) * sizeof(char));
+        strcpy(words[i], buffer);
     }
 
     char target[100];
     printf("Enter the target word to search for: ");
-    scanf("%s", target);
+    fgets(target, sizeof(target), stdin);
+    target[strcspn(target, "\n")] = '\0'; // Remove the trailing newline character from the input
 
     int index = binarySearchWords(words, size, target);
 
@@ -44,6 +52,12 @@ int main() {
     } else {
         printf("The target word '%s' is not found in the array.\n", target);
     }
+
+    // Free dynamically allocated memory
+    for (i = 0; i < size; i++) {
+        free(words[i]);
+    }
+    free(words);
 
     return 0;
 }
