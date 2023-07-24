@@ -7,7 +7,7 @@ Description :-  You are given an array of integers, which may contain both posit
 numbers. However, the array does not contain any duplicate elements. Your task is to write a C
 program to find the smallest positive integer that is missing from the array.
 
-Write a function int findMissingInteger(int arr[], int size) that takes the following parameters:  
+Write a function int findMissingInteger(int arr[ ], int size) that takes the following parameters:  
 1. arr: An array of integers.  
 2. size: The size of the array.  
 The function should return the smallest positive integer that is missing from the array. If no
