@@ -1,25 +1,23 @@
 #include <stdio.h>
 
-// Function to perform Bubble Sort in descending order
 void bubbleSortDescending(int arr[], int n) {
     int i, j, temp;
     int isSorted;
 
     for (i = 0; i < n - 1; i++) {
-        isSorted = 1; // Assume the array is sorted
+        isSorted = 1;
 
         for (j = 0; j < n - i - 1; j++) {
-            if (arr[j] < arr[j + 1]) { // Compare adjacent elements for descending order
-                // Swap elements
+            if (arr[j] < arr[j + 1]) {
                 temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
-                isSorted = 0; // Array is not sorted
+                isSorted = 0;
             }
         }
 
         if (isSorted) {
-            break; // If the array is already sorted, terminate early
+            return;
         }
     }
 }
@@ -38,6 +36,7 @@ int main() {
 
     printf("Enter the elements of the array:\n");
     for (int i = 0; i < size; i++) {
+        printf("Element %d: ", i + 1);
         scanf("%d", &arr[i]);
     }
 
