@@ -1,5 +1,5 @@
 
-# PROBLEM STATEMENT 1
+# PROBLEM STATEMENT 2
 
 Do a Time Complexity Comparison on the Code (A), when implemented using Quick Sort with Merge Sort on random data (10000).  
 # Requirements:  
