@@ -21,8 +21,6 @@ The following problems are included in this subcategory:
 
 7. **Selection Sort:** Implement the Selection Sort algorithm to sort an array of integers in ascending order.
 
-8. **Counting Sort:** Implement the Counting Sort algorithm to sort an array of non-negative integers.
-
 ## Getting Started
 
 To get started with the problems in this subcategory, follow these steps:
