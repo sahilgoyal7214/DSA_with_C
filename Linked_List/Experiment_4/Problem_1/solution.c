@@ -2,51 +2,63 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Define the structure for a student node
-struct Student {
+typedef struct Student {
     int rollNumber;
     char name[50];
     int age;
     struct Student *next;
-};
+} Student;
 
-// Function to print the details of a student
-void printStudent(struct Student *student) {
+void printStudentInfo(Student *student) {
     printf("Roll Number: %d\n", student->rollNumber);
     printf("Name: %s\n", student->name);
     printf("Age: %d\n", student->age);
-    printf("-----------------------\n");
+    printf("\n");
 }
 
 int main() {
-    // Create three student nodes
-    struct Student n1, n2, n3;
+    Student *head = NULL;
+    char choice;
 
-    // Fill in the details for each student
-    n1.rollNumber = 101;
-    strcpy(n1.name, "John");
-    n1.age = 20;
-    n1.next = &n2;
+    do {
+        Student *newStudent = (Student *)malloc(sizeof(Student));
+        printf("Enter Roll Number: ");
+        scanf("%d", &newStudent->rollNumber);
+        printf("Enter Name: ");
+        scanf("%s", newStudent->name);
+        printf("Enter Age: ");
+        scanf("%d", &newStudent->age);
+        newStudent->next = NULL;
 
-    n2.rollNumber = 102;
-    strcpy(n2.name, "Jane");
-    n2.age = 21;
-    n2.next = &n3;
+        if (head == NULL) {
+            head = newStudent;
+        } else {
+            Student *temp = head;
+            while (temp->next != NULL) {
+                temp = temp->next;
+            }
+            temp->next = newStudent;
+        }
 
-    n3.rollNumber = 103;
-    strcpy(n3.name, "Michael");
-    n3.age = 22;
-    n3.next = NULL;
+        printf("Do you want to add another student? (y/n): ");
+        scanf(" %c", &choice); // Notice the space before %c to consume the newline character
 
-    // Print details of each student
-    printf("Details of Student 1:\n");
-    printStudent(&n1);
+    } while (choice == 'y' || choice == 'Y');
 
-    printf("Details of Student 2:\n");
-    printStudent(&n2);
+    // Print the information of all students
+    Student *temp = head;
+    while (temp != NULL) {
+        printStudentInfo(temp);
+        temp = temp->next;
+    }
 
-    printf("Details of Student 3:\n");
-    printStudent(&n3);
+    // Free the allocated memory for the temp
+    temp = head;
+    while (temp != NULL) {
+        Student *nextStudent = temp->next;
+        free(temp);
+        temp = nextStudent;
+    }
 
-    return 0;
+    return 0;
 }
